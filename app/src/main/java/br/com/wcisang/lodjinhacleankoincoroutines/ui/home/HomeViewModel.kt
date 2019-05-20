@@ -10,7 +10,6 @@ import br.com.wcisang.domain.interactor.product.GetProdutosBestSellersUseCase
 import br.com.wcisang.domain.model.Banner
 import br.com.wcisang.domain.model.Categoria
 import br.com.wcisang.domain.model.Produto
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class HomeViewModel (
@@ -25,7 +24,7 @@ class HomeViewModel (
 
     fun getBanners() {
         bannersLiveData.postValue(Resource.loading())
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             bannersLiveData.postValue(getBannersUseCase.execute())
         }
     }
