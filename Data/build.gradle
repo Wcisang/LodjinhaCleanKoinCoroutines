@@ -1,0 +1,20 @@
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation project(':Domain')
+
+    def dep = rootProject.ext.dataDependencies
+    def depTest = rootProject.ext.dataTestDependencies
+
+    implementation dep.retrofit
+    implementation dep.retrofitGsonConverter
+    implementation dep.okHttp
+    implementation dep.okHttpLogger
+    implementation dep.coroutines
+    implementation dep.coroutinesAdapter
+    implementation dep.moshiConverver
+}
+
+sourceCompatibility = "1.6"
+targetCompatibility = "1.6"

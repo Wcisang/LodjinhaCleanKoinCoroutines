@@ -1,0 +1,18 @@
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin'
+
+dependencies {
+
+    def dep = rootProject.ext.domainDependencies
+    def depTest = rootProject.ext.domainTestDependencies
+
+    implementation dep.gson
+    implementation dep.kotlinStd
+    implementation dep.kotlinReflect
+    implementation dep.coroutines
+    implementation dep.moshiConverver
+}
+
+sourceCompatibility = "1.6"
+targetCompatibility = "1.6"
+
