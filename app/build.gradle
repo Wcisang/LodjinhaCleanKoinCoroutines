@@ -20,6 +20,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -28,6 +32,7 @@ dependencies {
     implementation project(':Data')
 
     def dep = rootProject.ext.uiDependencies
+    def depTest = rootProject.ext.uiTestDependencies
 
     implementation dep.archCompExtensions
     implementation dep.koinViewModel
@@ -42,8 +47,18 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha01"
 
+    testImplementation depTest.junit
+    testImplementation depTest.kotlinJUnit
+    testImplementation depTest.assertj
+    testImplementation depTest.mockito
+    testImplementation depTest.robolectric
+    testImplementation depTest.archTesting
+
 
     testImplementation 'junit:junit:4.12'
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.1"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.2.1"
+
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }
